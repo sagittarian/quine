@@ -8,8 +8,8 @@ s = "\n\
 \      n = chr 10\n\
 \      q' = chr 34\n\
 \      quote c acc\n\
-\        | c == q' = [sl, c] ++ acc\n\
-\        | c == n = [sl, 'n', sl, n, sl] ++ acc\n\
+\        | c == q' = sl : c : acc\n\
+\        | c == n = sl : 'n' : sl : n : sl : acc\n\
 \        | otherwise = (c : acc)\n\
 \\n\
 \main :: IO ()\n\
@@ -26,8 +26,8 @@ q = (q':) . foldr quote [q']
       n = chr 10
       q' = chr 34
       quote c acc
-        | c == q' = [sl, c] ++ acc
-        | c == n = [sl, 'n', sl, n, sl] ++ acc
+        | c == q' = sl : c : acc
+        | c == n = sl : 'n' : sl : n : sl : acc
         | otherwise = (c : acc)
 
 main :: IO ()
